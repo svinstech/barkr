@@ -37,7 +37,7 @@ def preprocess(row: Dict) -> Optional[Dict]:
 def transform(row: Dict) -> Dict:
     """Return a *copy* of the row with the following changes:
         Lat/long should be combined into an address object
-        created_at/updated_at should be combined into an address object       
+        created_at/updated_at should be combined into an date object
     """
     return {"doesnt": "work"}
 
