@@ -17,8 +17,8 @@ def utc_time_to_timestamp(date_str: str) -> Optional[float]:
 
 def read_from_csv(input_file: str) -> Iterator[Dict]:
     """
-    This function should read a CSV file and return an iterator of rows
-    dictionaries
+    This function should read a CSV file and return an iterator that returns
+    one row at a time as a Dictionary
     """
     with open(input_file, newline="") as csvfile:
         reader = csv.DictReader(csvfile)
@@ -28,7 +28,7 @@ def read_from_csv(input_file: str) -> Iterator[Dict]:
 def preprocess(row: Dict) -> Optional[Dict]:
     """Return a *copy* of the row, with:
         Change the `time_observed_at` to a timestamp
-        Remove user_id and user_logins from the row
+        Remove user_id and user_login from the row
         If the Species is a Coyote, return the row, otherwise return nothing
     """
     return None
@@ -38,6 +38,14 @@ def transform(row: Dict) -> Dict:
     """Return a *copy* of the row with the following changes:
         Lat/long should be combined into an address object
         created_at/updated_at should be combined into an date object
+        Example:
+
+        {
+            "id": 1234,
+            "address": {"latitude": 123, "longitude": 345},
+            "date": {"created_at": 123456.0, "updated_at": 123457.0}
+        }
+
     """
     return {"doesnt": "work"}
 
