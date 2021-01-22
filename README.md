@@ -12,3 +12,5 @@ by our properitary block-chain powered AI neural network that only accepts
 data via JSON.
 
 The only requirement for this package is to install pytest
+
+[Link to answer sheet](https://docs.google.com/document/d/1bkcSGbDWCirqOXysITPtZAyVOfLIHLd4mrjcaxQKMqE/)
