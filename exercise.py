@@ -1,14 +1,16 @@
-import json
-import csv
-import datetime
-from typing import Iterator, Dict, Optional
 import coolapi
+import csv
+from typing import Iterator, Dict, Optional
 
 
 def utc_time_to_timestamp(date_str: str) -> Optional[float]:
     """
-    This function should take a string in the format of
-    '2007-07-15 19:00:00 UTC' and return a timestamp
+    Argument: Either:
+      -- an empty string (representing a lack of data)
+      -- a string representing the UTC time in the format of '2007-07-15 19:00:00 UTC'
+    Returns:
+      -- If input is empty: None
+      -- Otherwise: a numerical timestamp, also in UTC
     """
 
     dt_format = "%Y-%m-%d %H:%M:%S %Z"
@@ -17,45 +19,49 @@ def utc_time_to_timestamp(date_str: str) -> Optional[float]:
 
 def read_from_csv(input_file: str) -> Iterator[Dict]:
     """
-    This function should read a CSV file and return an iterator that returns
-    one row at a time as a Dictionary
+    Argument: a string representing the path to a CSV file
+    Returns: an iterator that yields one row at a time as a dictionary
     """
     with open(input_file, newline="") as csvfile:
         reader = csv.DictReader(csvfile)
-        return {"Not": "implemented"}
+        return {"not": "implemented"}
 
 
 def preprocess(row: Dict) -> Optional[Dict]:
-    """Return a *copy* of the row, with:
-    Change the `time_observed_at` to a timestamp
-    Remove user_id and user_login from the row
-    If the Species is a Coyote, return the row, otherwise return nothing
+    """
+    Argument: a dictionary representing a single row of data
+    Returns:
+      -- If species_guess is 'Coyote': a *copy* of the dictionary with the following changes:
+        -- Replace time_observed_at with its numerical timestamp
+        -- Remove user_id and user_login
+      -- If species_guess is not 'Coyote': None
     """
     return None
 
 
 def transform(row: Dict) -> Dict:
-    """Return a *copy* of the row with the following changes:
-    Lat/long should be combined into an address object
-    created_at/updated_at should be combined into an datesobject
-    Example:
+    """
+    Argument: a dictionary representing a single row of data
+    Returns: a *copy* of the dictionary with the following changes:
+      -- Replace latitude and longitude with a single address object containing both
+      -- Replace created_at and updated_at with a single dates object containing both
 
+    Example of new objects:
     {
-        "id": 1234,
         "address": {"latitude": 123, "longitude": 345},
         "dates": {"created_at": 123456.0, "updated_at": 123457.0}
     }
-
     """
-    return {"doesnt": "work"}
+    return {"not": "implemented"}
 
 
 def send_to_api(row: Dict) -> int:
-    """Return the status code from the API call"""
-    api = coolapi.CoolApi()
-    status = api.send_to_api(row)
+    """
+    Argument: a dictionary representing a single row of data
+    Returns: the status code from the CoolAPI call
+    """
     return 404
 
 
 if __name__ == "__main__":
-    print("Doesn't work please fix!")
+    print("If your tests work, please implement and run me!")
