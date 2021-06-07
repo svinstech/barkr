@@ -8,9 +8,9 @@ class CoolApi:
         CoolApi.inits += 1
         self.api_key = api_key
         if api_key is None:
-            raise Exception("unauthorized!!!!")
+            raise Exception("ERROR: Unauthorized! Any key will do!")
         if CoolApi.inits >= 5:
-            raise Exception("Too many classes initialized, out of memory oomph")
+            raise Exception("ERROR: Too many instances initialized; out of memory!")
 
     def authorized(self) -> bool:
         return self.api_key is not None
@@ -19,6 +19,6 @@ class CoolApi:
         assert record["dates"]
         assert record["address"]
         if record["species_guess"] == "Coyote":
-            print("Record recevied, thank you!")
-            return {"status": 200, "body": "Thank you!"}
-        return {"status": 400, "body": "No thanks!"}
+            print("Record received! Thank you!")
+            return {"status": 200, "body": "Success!"}
+        return {"status": 400, "body": "Oh dear; something's gone wrong."}

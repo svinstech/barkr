@@ -6,6 +6,7 @@ from exercise import coolapi
 def test_utc_time_to_datetime():
     expected = datetime.datetime(2007, 7, 15, 19).timestamp()
     assert exercise.utc_time_to_timestamp("2007-07-15 19:00:00 UTC") == expected
+    assert exercise.utc_time_to_timestamp("") is None
 
 
 def test_read_csv():
@@ -90,7 +91,7 @@ def test_preprocess():
     assert "user_id" not in result
     assert "user_login" not in result
     assert result["species_guess"] == "Coyote"
-    assert result["time_observed_at"] == 1184551200.0
+    assert result["time_observed_at"] == 1184526000.0
 
 
 def test_transform():
@@ -130,10 +131,14 @@ def test_transform():
     }
     result = exercise.transform(original)
     assert result is not original
+    assert "latitude" not in result
+    assert "longitude" not in result
     assert result["address"] == {
         "latitude": "37.9361953735",
         "longitude": "-122.1150054932",
     }
+    assert "created_at" not in result
+    assert "updated_at" not in result
     assert result["dates"] == {
         "created_at": "2009-01-13 23:26:04 UTC",
         "updated_at": "2018-08-22 00:52:13 UTC",
