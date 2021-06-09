@@ -61,4 +61,5 @@ def send_to_api(row: Dict) -> int:
 
 
 if __name__ == "__main__":
-    print("If your tests work, please implement and run me!")
+    # Once the tests work, implement and run this!
+    pass
