@@ -1,6 +1,5 @@
+from coolapi import CoolApi
 import exercise
-import datetime
-from exercise import coolapi
 
 
 def test_utc_time_to_datetime():
@@ -92,6 +91,10 @@ def test_preprocess():
     assert result["species_guess"] == "Coyote"
     assert result["time_observed_at"] == 1184526000.0
 
+    non_coyote = original.copy()
+    non_coyote["species_guess"] = "Chupacabra"
+    assert exercise.preprocess(non_coyote) is None
+
 
 def test_transform():
     original = {
@@ -182,9 +185,8 @@ def test_send_to_api(monkeypatch):
         }
     )
 
-    def mockreturn(x, y, **args):
+    def mock_return(unused_x, unused_y, **unused_args):
         return {"status": 200, "message": "cool"}
 
-    monkeypatch.setattr(coolapi.CoolApi, "send_to_api", mockreturn)
-    x = exercise.send_to_api(data)
-    assert x == 200
+    monkeypatch.setattr(CoolApi, "send_to_api", mock_return)
+    assert exercise.send_to_api(data) == 200

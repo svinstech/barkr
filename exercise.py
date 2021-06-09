@@ -1,5 +1,5 @@
-import coolapi
-import csv
+from csv import DictReader
+from coolapi import CoolApi
 from datetime import datetime, timezone
 from typing import Iterator, Dict, Optional
 
@@ -8,14 +8,12 @@ def utc_time_to_timestamp(date_str: str) -> Optional[float]:
     """
     Argument: Either:
       -- an empty string (representing a lack of data)
-      -- a string representing the UTC time in the format of '2007-07-15 19:00:00 UTC'
+      -- a string of the form "%Y-%m-%d %H:%M:%S %Z" e.g. '2007-07-15 19:00:00 UTC'
     Returns:
       -- If input is an empty string: None
       -- Otherwise: the numerical Unix timestamp, also in UTC
     """
-
-    dt_format = "%Y-%m-%d %H:%M:%S %Z"
-    return None
+    pass
 
 
 def read_from_csv(input_file: str) -> Iterator[Dict]:
@@ -23,9 +21,7 @@ def read_from_csv(input_file: str) -> Iterator[Dict]:
     Argument: a string representing the path to a CSV file
     Returns: an iterator that yields one row at a time as a dictionary
     """
-    with open(input_file, newline="") as csvfile:
-        reader = csv.DictReader(csvfile)
-        return None
+    pass
 
 
 def preprocess(row: Dict) -> Optional[Dict]:
@@ -37,7 +33,7 @@ def preprocess(row: Dict) -> Optional[Dict]:
         -- Remove user_id and user_login
       -- If species_guess is not 'Coyote': None
     """
-    return None
+    pass
 
 
 def transform(row: Dict) -> Dict:
@@ -53,7 +49,7 @@ def transform(row: Dict) -> Dict:
         "dates": {"created_at": 123456.0, "updated_at": 123457.0}
     }
     """
-    return None
+    pass
 
 
 def send_to_api(row: Dict) -> int:
@@ -61,7 +57,7 @@ def send_to_api(row: Dict) -> int:
     Argument: a dictionary representing a single row of data
     Returns: the numerical status code from the CoolAPI call
     """
-    return None
+    pass
 
 
 if __name__ == "__main__":
