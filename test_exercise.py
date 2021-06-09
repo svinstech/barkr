@@ -4,8 +4,7 @@ from exercise import coolapi
 
 
 def test_utc_time_to_datetime():
-    expected = datetime.datetime(2007, 7, 15, 19).timestamp()
-    assert exercise.utc_time_to_timestamp("2007-07-15 19:00:00 UTC") == expected
+    assert exercise.utc_time_to_timestamp("2007-07-15 19:00:00 UTC") == 1184526000.0
     assert exercise.utc_time_to_timestamp("") is None
 
 
