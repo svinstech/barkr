@@ -91,9 +91,8 @@ def test_preprocess():
     assert result["species_guess"] == "Coyote"
     assert result["time_observed_at"] == 1184526000.0
 
-    non_coyote = original.copy()
-    non_coyote["species_guess"] = "Chupacabra"
-    assert exercise.preprocess(non_coyote) is None
+    original["species_guess"] = "Chupacabra"
+    assert exercise.preprocess(original) is None
 
 
 def test_transform():
