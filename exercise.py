@@ -19,7 +19,7 @@ def utc_time_to_timestamp(date_str: str) -> Optional[float]:
 def read_from_csv(input_file: str) -> Iterator[Dict]:
     """
     Argument: a string representing the path to a CSV file
-    Returns: an iterator that yields one row at a time as a dictionary
+    Yields: one row at a time as a dictionary
     """
     pass
 
